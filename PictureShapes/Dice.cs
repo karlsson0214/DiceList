@@ -1,86 +1,37 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace DiceApp
 {
     class Dice
     {
+        // object variables - graphics
         private Square dice;
-        private Circle dot0;
-        private Circle dot1;
-        private Circle dot2;
-        private Circle dot3;
-        private Circle dot4;
-        private Circle dot5;
-        private Circle dot6;
-        private Circle dot7;
+        private List<Circle> dots = new List<Circle>();
 
         // number of dots to display
         private int number;
 
         private static Random randomGenerator;
 
+        /// <summary>
+        /// Create an object of the class Dice. Make a Dice.
+        /// </summary>
         public Dice()
         {
-            DrawDice();
             randomGenerator = new Random();
-        }
-        private void DrawDice()
-        {
-            // dot ordering
-            // 1   4
-            // 5 0 6
-            // 3   2
-            dice = new Square();
-            dot0 = new Circle();
-            dot1 = new Circle();
-            dot2 = new Circle();
-            dot3 = new Circle();
-            dot4 = new Circle();
-            dot5 = new Circle();
-            dot6 = new Circle();
-            dot7 = new Circle();
 
-            dice.ChangeColor("white");
-            dice.ChangeSize(240);
-            dice.MoveVertical(-100);
+            // Create circle and set properties. Add to list dots.
+            Circle dot = new Circle();
+            dot.Size = 33;
+            dots.Add(dot);
+            // Add your code ...
 
-            dot0.ChangeSize(40);
-            dot1.ChangeSize(40);
-            dot2.ChangeSize(40);
-            dot3.ChangeSize(40);
-            dot4.ChangeSize(40);
-            dot5.ChangeSize(40);
-            dot6.ChangeSize(40);
+            // Different order. Create circle and add to list dots. Change property on cirkle.
+            Cirle.Add(new Circle());
+            dots[1].Size = 33;
 
-            dot0.MoveHorizontal(50);
-            dot0.MoveVertical(170);
-
-            dot1.MoveHorizontal(50 - 80);
-            dot1.MoveVertical(170 - 80);
-
-            dot2.MoveHorizontal(50 + 80);
-            dot2.MoveVertical(170 + 80);
-
-            dot3.MoveHorizontal(50 + 80);
-            dot3.MoveVertical(170 - 80);
-
-            dot4.MoveHorizontal(50 - 80);
-            dot4.MoveVertical(170 + 80);
-
-            dot5.MoveHorizontal(50 - 80);
-            dot5.MoveVertical(170);
-
-            dot6.MoveHorizontal(50 + 80);
-            dot6.MoveVertical(170);
-
-            dice.MakeVisible();
-            dot0.MakeVisible();
-            dot1.MakeVisible();
-            dot2.MakeVisible();
-            dot3.MakeVisible();
-            dot4.MakeVisible();
-            dot5.MakeVisible();
-            dot6.MakeVisible();
+            // Add your code ...
         }
 
         /// <summary>
@@ -90,40 +41,15 @@ namespace DiceApp
         {
             number = randomGenerator.Next(6) + 1;
 
-            HideAllDots();
+            // Add your code
 
-            if (IsOdd(number))
-            {
-                // show middle
-                dot0.MakeVisible();
-            }
-            if (number >= 2)
-            {
-                dot1.MakeVisible();
-                dot2.MakeVisible();
-            }
-            if (number >= 4)
-            {
-                dot3.MakeVisible();
-                dot4.MakeVisible();
-            }
-            if (number == 6)
-            {
-                dot5.MakeVisible();
-                dot6.MakeVisible();
-            }
-        }
-        private void HideAllDots()
-        {
-            dot0.MakeInVisible();
-            dot1.MakeInVisible();
-            dot2.MakeInVisible();
-            dot3.MakeInVisible();
-            dot4.MakeInVisible();
-            dot5.MakeInVisible();
-            dot6.MakeInVisible();
 
         }
+        /// <summary>
+        /// Check if number is odd or even.
+        /// </summary>
+        /// <param name="number"></param>
+        /// <returns>true if number is odd, otherwise false</returns>
         private bool IsOdd(int number)
         {
             return number % 2 == 1;
